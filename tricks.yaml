@@ -1,0 +1,6 @@
+# pip install watchdog nose nose-cov flake8
+# watchmedo tricks-from tricks.yaml
+tricks:
+    - watchdog.tricks.ShellCommandTrick:
+        patterns: ["*.py"]
+        shell_command: "nosetests && flake8 $(find . -name '*.py')"
