@@ -18,6 +18,7 @@ setup(
     license='MIT',
     author="JuanPablo AJ",
     author_email="jpabloaj@gmail.com",
+    url="https://github.com/juanpabloaj/pip-init",
     packages=['pip_init'],
     test_suite="tests",
     entry_points={
