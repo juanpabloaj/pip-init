@@ -4,6 +4,13 @@ pip-init
 
 pip-init to generate a base setup.py file
 
+Install
+=======
+
+::
+
+    pip install pip-init
+
 Usage
 =====
 
