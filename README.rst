@@ -18,4 +18,4 @@ Usage
 
     pip-init
 
-.. image:: http://i.imgur.com/XHaWAkk.gif
+.. image:: http://i.imgur.com/TTw7Ctn.gif
