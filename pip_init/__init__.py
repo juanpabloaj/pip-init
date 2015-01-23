@@ -32,7 +32,6 @@ def main():
             name=field_name, value=input_value
         )
 
-    setup_lines = setup_lines[:-2]
     setup_content = setup_base_template.substitute(setup_lines=setup_lines)
 
     with open('setup.py', 'w') as setup_file:
