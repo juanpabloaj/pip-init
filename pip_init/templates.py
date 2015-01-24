@@ -13,9 +13,15 @@ setup_base_template = Template(
     'except InstallationError:\n'
     '    install_requires = []\n'
     '\n'
+    'try:\n'
+    '    long_description = open("README.rst").read()\n'
+    'except IOError:\n'
+    '    long_description = ""\n'
+    '\n'
     'setup(\n'
     '${setup_lines}'
-    '    install_requires=install_requires\n'
+    '    install_requires=install_requires,\n'
+    '    long_description=long_description\n'
     ')\n'
 )
 
