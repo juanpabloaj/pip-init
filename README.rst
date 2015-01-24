@@ -5,7 +5,7 @@ pip-init
 .. image:: https://travis-ci.org/juanpabloaj/pip-init.svg?branch=master
     :target: https://travis-ci.org/juanpabloaj/pip-init
 
-pip-init to generate a base setup.py file
+Generate a base setup.py file to upload a python package to `pypi <https://pypi.python.org/pypi>`_
 
 Install
 =======
