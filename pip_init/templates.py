@@ -9,7 +9,7 @@ setup_base_template = Template(
     '\n'
     'try:\n'
     '    requirements = parse_requirements("requirements.txt")\n'
-    '    install_requires=[str(r.req) for r in requirements]\n'
+    '    install_requires = [str(r.req) for r in requirements]\n'
     'except InstallationError:\n'
     '    install_requires = []\n'
     '\n'
