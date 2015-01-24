@@ -50,4 +50,4 @@ References
 * `Packaging and Distributing Projects, pypa. <https://packaging.python.org/en/latest/distributing.html>`_
 * `Sharing Your Labor of Love: PyPI Quick and Dirty, Hynek Schlawack. <https://hynek.me/articles/sharing-your-labor-of-love-pypi-quick-and-dirty/>`_
 * `Open Sourcing a Python Project the Right Way, Jeff Knupp. <http://www.jeffknupp.com/blog/2013/08/16/open-sourcing-a-python-project-the-right-way/>`_
-* `Empaquetando y distribuyendo código python con pip (spanish), JuanPabloAJ. <ttps://speakerdeck.com/juanpabloaj/enpaquetando-y-distribuyendo-codigo-python-con-pip>`_
+* `Empaquetando y distribuyendo código python con pip (spanish), JuanPabloAJ. <https://speakerdeck.com/juanpabloaj/enpaquetando-y-distribuyendo-codigo-python-con-pip>`_
