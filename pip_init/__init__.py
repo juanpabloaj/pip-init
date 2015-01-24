@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from pip_init.templates import setup_base_template, setup_line
+from sys import version_info
 
 
 def default_values(field_name):
@@ -24,7 +25,11 @@ def main():
         default_value = default_values(field_name)
         input_msg = '{} ({}): '.format(field_name, default_value)
 
-        input_value = raw_input(input_msg)
+        if version_info >= (3, 0):
+            input_value = input(input_msg)
+        else:
+            input_value = raw_input(input_msg)
+
         if input_value == '':
             input_value = default_value
 
