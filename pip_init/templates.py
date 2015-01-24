@@ -3,7 +3,7 @@
 from string import Template
 
 setup_base_template = Template(
-    'from setuptools import setup\n'
+    'from setuptools import setup, find_packages\n'
     'from pip.req import parse_requirements\n'
     'from pip.exceptions import InstallationError\n'
     '\n'
@@ -20,6 +20,7 @@ setup_base_template = Template(
     '\n'
     'setup(\n'
     '${setup_lines}'
+    '    packages=find_packages(),\n'
     '    install_requires=install_requires,\n'
     '    long_description=long_description\n'
     ')\n'

@@ -21,4 +21,4 @@ Usage
 
     pip-init
 
-.. image:: http://i.imgur.com/TTw7Ctn.gif
+.. image:: http://i.imgur.com/T6Emkms.gif
