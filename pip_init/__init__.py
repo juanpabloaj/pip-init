@@ -4,6 +4,10 @@ from pip_init.templates import setup_base_template, setup_line
 from sys import version_info
 
 
+def input_message(field_name, default_value):
+    return '{} ({}): '.format(field_name, default_value)
+
+
 def default_values(field_name):
     if field_name == 'name':
         return 'package-name'
@@ -23,7 +27,7 @@ def main():
 
     for field_name in fields:
         default_value = default_values(field_name)
-        input_msg = '{} ({}): '.format(field_name, default_value)
+        input_msg = input_message(field_name, default_value)
 
         if version_info >= (3, 0):
             input_value = input(input_msg)
