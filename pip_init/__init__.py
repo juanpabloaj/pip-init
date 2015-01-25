@@ -2,10 +2,24 @@
 # -*- coding: utf-8 -*-
 from pip_init.templates import setup_base_template, setup_line
 from sys import version_info
+from subprocess import Popen, PIPE
 
 
 def input_message(field_name, default_value):
     return '{} ({}): '.format(field_name, default_value)
+
+
+def git_config(key):
+    '''Get git config values.'''
+
+    # run git config --global <key> to get global git config value
+    p = Popen(['git', 'config', '--global', key], stdout=PIPE, stderr=PIPE)
+    output, err = p.communicate()
+
+    # turn stdout into unicode and strip it
+    output = output.decode('utf-8').strip()
+
+    return output
 
 
 def default_values(field_name):
@@ -18,7 +32,7 @@ def default_values(field_name):
     elif field_name == 'license':
         return 'MIT'
     elif field_name == 'author':
-        return 'Author name'
+        return git_config('user.name')
 
 
 def main():
