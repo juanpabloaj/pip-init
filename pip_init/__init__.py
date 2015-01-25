@@ -3,23 +3,34 @@
 from pip_init.templates import setup_base_template, setup_line
 from sys import version_info
 from subprocess import Popen, PIPE
+from getpass import getuser
 
 
 def input_message(field_name, default_value):
     return '{} ({}): '.format(field_name, default_value)
 
 
-def git_config(key):
+def get_username():
     '''Get git config values.'''
+    username = ''
 
-    # run git config --global <key> to get global git config value
-    p = Popen(['git', 'config', '--global', key], stdout=PIPE, stderr=PIPE)
-    output, err = p.communicate()
+    # use try-catch to prevent crashes if user doesn't install git
+    try:
+        # run git config --global <key> to get username
+        p = Popen(['git', 'config', '--global', 'user.name'], stdout=PIPE, stderr=PIPE)
+        output, err = p.communicate()
 
-    # turn stdout into unicode and strip it
-    output = output.decode('utf-8').strip()
+        # turn stdout into unicode and strip it
+        username = output.decode('utf-8').strip()
 
-    return output
+        # if user doesn't set global git config name, then use getuser()
+        if not username:
+            username = getuser()
+    except OSError:
+        # if git command is not found, then use getuser()
+        username = getuser()
+
+    return username
 
 
 def default_values(field_name):
@@ -32,7 +43,7 @@ def default_values(field_name):
     elif field_name == 'license':
         return 'MIT'
     elif field_name == 'author':
-        return git_config('user.name')
+        return get_username()
 
 
 def main():
