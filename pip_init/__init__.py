@@ -17,7 +17,8 @@ def get_username():
     # use try-catch to prevent crashes if user doesn't install git
     try:
         # run git config --global <key> to get username
-        p = Popen(['git', 'config', '--global', 'user.name'], stdout=PIPE, stderr=PIPE)
+        git_command = ['git', 'config', '--global', 'user.name']
+        p = Popen(git_command, stdout=PIPE, stderr=PIPE)
         output, err = p.communicate()
 
         # turn stdout into unicode and strip it
