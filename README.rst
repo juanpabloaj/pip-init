@@ -44,8 +44,9 @@ What are the next steps to upload a package to `pypi <https://pypi.python.org/py
     username = <username>
     password = <password>
 
-* Upload your package to pypi ::
+* Register and upload your package to pypi ::
 
+    python setup.py register
     python setup.py sdist upload -r pypi
 
 References
