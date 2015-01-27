@@ -4,6 +4,7 @@ from pip_init.templates import setup_base_template, setup_line
 from sys import version_info
 from subprocess import Popen, PIPE
 from getpass import getuser
+import os
 
 
 def input_message(field_name, default_value):
@@ -36,7 +37,7 @@ def get_username():
 
 def default_values(field_name):
     if field_name == 'name':
-        return 'package-name'
+        return os.path.relpath('.', '..')
     if field_name == 'version':
         return '0.1.0'
     elif field_name == 'description':
