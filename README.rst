@@ -24,7 +24,7 @@ Usage
 
     pip-init
 
-.. image:: http://i.imgur.com/T6Emkms.gif
+.. image:: http://i.imgur.com/1Wg46cR.gif
 
 I created a setup.py file, what are the next steps?
 ====================================================
