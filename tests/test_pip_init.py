@@ -3,6 +3,7 @@
 import unittest
 
 from pip_init.templates import setup_line
+from pip_init.templates import setup_base_template
 from pip_init import input_message
 
 
@@ -12,6 +13,31 @@ class TestPipInitTemplates(unittest.TestCase):
         self.assertEqual(
             setup_line.substitute(name='author', value='me'),
             '    author="me",\n',
+        )
+
+    def test_setup_base_template(self):
+
+        expected_setup = (
+            'from setuptools import setup, find_packages\n'
+            '\n'
+            'try:\n'
+            '    long_description = open("README.rst").read()\n'
+            'except IOError:\n'
+            '    long_description = ""\n'
+            '\n'
+            'setup(\n'
+            '    name="dump-package",\n'
+            '    packages=find_packages(),\n'
+            '    install_requires=[],\n'
+            '    long_description=long_description\n'
+            ')\n'
+        )
+
+        setup_lines = '    name="dump-package",\n'
+
+        self.assertEqual(
+            expected_setup,
+            setup_base_template.substitute(setup_lines=setup_lines)
         )
 
 
