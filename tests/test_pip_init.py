@@ -29,7 +29,10 @@ class TestPipInitTemplates(unittest.TestCase):
             '    name="dump-package",\n'
             '    packages=find_packages(),\n'
             '    install_requires=[],\n'
-            '    long_description=long_description\n'
+            '    long_description=long_description,\n'
+            '    classifiers=[\n'
+            '        "Programming Language :: Python",\n'
+            '    ]\n'
             ')\n'
         )
 

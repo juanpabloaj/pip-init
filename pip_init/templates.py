@@ -15,7 +15,10 @@ setup_base_template = Template(dedent("""\
     ${setup_lines}\
     packages=find_packages(),
         install_requires=[],
-        long_description=long_description
+        long_description=long_description,
+        classifiers=[
+            "Programming Language :: Python",
+        ]
     )
     """))
 
