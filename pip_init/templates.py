@@ -16,12 +16,20 @@ setup_base_template = Template(dedent("""\
     packages=find_packages(),
         install_requires=[],
         long_description=long_description,
-        classifiers=[
-            "Programming Language :: Python",
-        ]
+    ${classifiers}
     )
     """))
 
 setup_line = Template(
     '    ${name}="${value}",\n'
+)
+
+classifiers_line = Template(
+    '        "${classifier}",\n'
+)
+
+classifiers_template = Template(
+    '    classifiers=[\n'
+    '${classifiers}'
+    '    ]'
 )

@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 from pip_init.templates import setup_base_template, setup_line
+from pip_init.templates import classifiers_line, classifiers_template
 from sys import version_info
 from subprocess import Popen, PIPE
 from getpass import getuser
@@ -9,6 +10,19 @@ import os
 
 def input_message(field_name, default_value):
     return '{} ({}): '.format(field_name, default_value)
+
+
+def gen_classifiers():
+    mayor, minor = version_info[:2]
+    python = "Programming Language :: Python"
+    local = "Programming Language :: Python :: {}.{}".format(mayor, minor)
+    classifiers = [python, local]
+
+    classifiers_lines = ''
+    for cls in classifiers:
+        classifiers_lines += classifiers_line.substitute(classifier=cls)
+
+    return classifiers_template.substitute(classifiers=classifiers_lines)
 
 
 def get_username():
@@ -68,7 +82,10 @@ def main():
             name=field_name, value=input_value
         )
 
-    setup_content = setup_base_template.substitute(setup_lines=setup_lines)
+    setup_content = setup_base_template.substitute(
+        setup_lines=setup_lines,
+        classifiers=gen_classifiers()
+    )
 
     with open('setup.py', 'w') as setup_file:
         setup_file.write(setup_content)
