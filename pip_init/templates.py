@@ -4,6 +4,7 @@ from string import Template
 from textwrap import dedent
 
 setup_base_template = Template(dedent("""\
+    # -*- coding: utf-8 -*-
     from setuptools import setup, find_packages
 
     try:

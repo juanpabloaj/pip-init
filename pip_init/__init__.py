@@ -73,7 +73,7 @@ def main():
         if version_info >= (3, 0):
             input_value = input(input_msg)
         else:
-            input_value = raw_input(input_msg.encode('utf8'))
+            input_value = raw_input(input_msg.encode('utf8')).decode('utf-8')
 
         if input_value == '':
             input_value = default_value
