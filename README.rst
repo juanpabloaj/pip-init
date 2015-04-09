@@ -64,3 +64,4 @@ Contributors
 - `JuanPablo AJ <https://github.com/juanpabloaj>`_
 - `David Yen <https://github.com/davidyen1124>`_
 - `Tom Viner <https://github.com/tomviner>`_
+- `Krisztián Fekete <https://github.com/krisztianfekete>`_
