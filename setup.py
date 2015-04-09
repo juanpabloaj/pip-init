@@ -12,7 +12,7 @@ def read(*paths):
 
 setup(
     name="pip-init",
-    version="0.2.0",
+    version="0.2.1",
     description="pip-init to generate a base setup.py file",
     long_description=(read('README.rst')),
     license='MIT',
