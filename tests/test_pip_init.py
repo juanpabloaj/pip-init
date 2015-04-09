@@ -43,6 +43,7 @@ class TestPipInitTemplates(unittest.TestCase):
     def test_setup_base_template(self):
 
         expected_setup = (
+            '# -*- coding: utf-8 -*-\n'
             'from setuptools import setup, find_packages\n'
             '\n'
             'try:\n'
