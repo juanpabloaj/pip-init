@@ -2,9 +2,6 @@
 pip-init
 ========
 
-.. image:: https://pypip.in/v/pip-init/badge.png
-    :target: https://pypi.python.org/pypi/pip-init
-
 .. image:: https://travis-ci.org/juanpabloaj/pip-init.svg?branch=master
     :target: https://travis-ci.org/juanpabloaj/pip-init
 
