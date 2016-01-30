@@ -63,12 +63,14 @@ def default_values(field_name):
         return get_username()
 
 
-def get_input(input_msg):
+def get_input(input_msg, default=None):
     if version_info >= (3, 0):
         input_value = input(input_msg)
     else:
         input_value = raw_input(input_msg.encode('utf8')).decode('utf8')
 
+    if input_value == '':
+        return default
     return input_value
 
 
@@ -87,10 +89,7 @@ def main():
         default_value = default_values(field_name)
         input_msg = input_message(field_name, default_value)
 
-        input_value = get_input(input_msg)
-
-        if input_value == '':
-            input_value = default_value
+        input_value = get_input(input_msg, default=default_value)
 
         setup_lines += setup_line.substitute(
             name=field_name, value=input_value
@@ -104,7 +103,8 @@ def main():
     with open('setup.py', 'w') as setup_file:
         write_content(setup_file, setup_content)
 
-    with_gitignore = get_input('Generate .gitignore file [Y/n]? ')
+    with_gitignore = get_input('Generate .gitignore file [Y/n]? (Y): ',
+                               default='y')
     if with_gitignore.lower() == 'y':
         with open('.gitignore', 'w') as gitignore_file:
             write_content(gitignore_file, gitignore_content)
