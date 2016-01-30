@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from pip_init.templates import setup_base_template, setup_line
-from pip_init.templates import classifiers_line, classifiers_template
+from pip_init.templates import (
+    setup_base_template, setup_line, gitignore_content, classifiers_line,
+    classifiers_template)
 from sys import version_info
 from subprocess import Popen, PIPE
 from getpass import getuser
@@ -62,6 +63,24 @@ def default_values(field_name):
         return get_username()
 
 
+def get_input(input_msg, default=None):
+    if version_info >= (3, 0):
+        input_value = input(input_msg)
+    else:
+        input_value = raw_input(input_msg.encode('utf8')).decode('utf8')
+
+    if input_value == '':
+        return default
+    return input_value
+
+
+def write_content(file, content):
+    if version_info >= (3, 0):
+        file.write(content)
+    else:
+        file.write(content.encode('utf8'))
+
+
 def main():
     fields = ['name', 'version', 'description', 'license', 'author']
     setup_lines = ''
@@ -70,13 +89,7 @@ def main():
         default_value = default_values(field_name)
         input_msg = input_message(field_name, default_value)
 
-        if version_info >= (3, 0):
-            input_value = input(input_msg)
-        else:
-            input_value = raw_input(input_msg.encode('utf8')).decode('utf-8')
-
-        if input_value == '':
-            input_value = default_value
+        input_value = get_input(input_msg, default=default_value)
 
         setup_lines += setup_line.substitute(
             name=field_name, value=input_value
@@ -88,10 +101,13 @@ def main():
     )
 
     with open('setup.py', 'w') as setup_file:
-        if version_info >= (3, 0):
-            setup_file.write(setup_content)
-        else:
-            setup_file.write(setup_content.encode('utf8'))
+        write_content(setup_file, setup_content)
+
+    with_gitignore = get_input('Generate .gitignore file [Y/n]? (Y): ',
+                               default='y')
+    if with_gitignore.lower() == 'y':
+        with open('.gitignore', 'w') as gitignore_file:
+            write_content(gitignore_file, gitignore_content)
 
 
 if __name__ == '__main__':
