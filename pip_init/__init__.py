@@ -62,6 +62,22 @@ def default_values(field_name):
         return get_username()
 
 
+def get_input(input_msg):
+    if version_info >= (3, 0):
+        input_value = input(input_msg)
+    else:
+        input_value = raw_input(input_msg.encode('utf8')).decode('utf8')
+
+    return input_value
+
+
+def write_content(file, content):
+    if version_info >= (3, 0):
+        file.write(content)
+    else:
+        file.write(content.encode('utf8'))
+
+
 def main():
     fields = ['name', 'version', 'description', 'license', 'author']
     setup_lines = ''
@@ -70,10 +86,7 @@ def main():
         default_value = default_values(field_name)
         input_msg = input_message(field_name, default_value)
 
-        if version_info >= (3, 0):
-            input_value = input(input_msg)
-        else:
-            input_value = raw_input(input_msg.encode('utf8')).decode('utf-8')
+        input_value = get_input(input_msg)
 
         if input_value == '':
             input_value = default_value
@@ -88,10 +101,7 @@ def main():
     )
 
     with open('setup.py', 'w') as setup_file:
-        if version_info >= (3, 0):
-            setup_file.write(setup_content)
-        else:
-            setup_file.write(setup_content.encode('utf8'))
+        write_content(setup_file, setup_content)
 
 
 if __name__ == '__main__':
