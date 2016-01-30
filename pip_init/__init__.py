@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from pip_init.templates import setup_base_template, setup_line
-from pip_init.templates import classifiers_line, classifiers_template
+from pip_init.templates import (
+    setup_base_template, setup_line, gitignore_content, classifiers_line,
+    classifiers_template)
 from sys import version_info
 from subprocess import Popen, PIPE
 from getpass import getuser
@@ -102,6 +103,11 @@ def main():
 
     with open('setup.py', 'w') as setup_file:
         write_content(setup_file, setup_content)
+
+    with_gitignore = get_input('Generate .gitignore file [Y/n]? ')
+    if with_gitignore.lower() == 'y':
+        with open('.gitignore', 'w') as gitignore_file:
+            write_content(gitignore_file, gitignore_content)
 
 
 if __name__ == '__main__':
