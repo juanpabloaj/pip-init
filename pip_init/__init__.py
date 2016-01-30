@@ -103,7 +103,7 @@ def main():
     with open('setup.py', 'w') as setup_file:
         write_content(setup_file, setup_content)
 
-    with_gitignore = get_input('Generate .gitignore file [Y/n]? (Y): ',
+    with_gitignore = get_input('Generate .gitignore file [Y/n]?: ',
                                default='y')
     if with_gitignore.lower() == 'y':
         with open('.gitignore', 'w') as gitignore_file:
