@@ -62,3 +62,4 @@ Contributors
 - `David Yen <https://github.com/davidyen1124>`_
 - `Tom Viner <https://github.com/tomviner>`_
 - `Krisztián Fekete <https://github.com/krisztianfekete>`_
+- `Kevin J. Qiu <https://github.com/kevinjqiu>`_
